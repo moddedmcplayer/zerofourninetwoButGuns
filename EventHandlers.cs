@@ -24,7 +24,8 @@ namespace zerofourninetwoButGuns
                         if (cfg.speedyboi)
                         {
                             ev.Player.EnableEffect(EffectType.Scp207);
-                            ev.Player.GetEffect(EffectType.Scp207).Intensity = (byte)cfg.speed;
+                            if(cfg.speed > 1)
+                                ev.Player.GetEffect(EffectType.Scp207).Intensity = (byte)cfg.speed;
                         }
                     }
                 );
@@ -36,7 +37,8 @@ namespace zerofourninetwoButGuns
             if (ev.Player.Role.Type == RoleType.Scp0492 && !ev.Player.Items.Any(x => x.IsWeapon) && cfg.speedyboi)
             {
                 ev.Player.EnableEffect(EffectType.Scp207);
-                ev.Player.GetEffect(EffectType.Scp207).Intensity = (byte)cfg.speed;
+                if(cfg.speed > 1)
+                    ev.Player.GetEffect(EffectType.Scp207).Intensity = (byte)cfg.speed;
             }
         }
         
