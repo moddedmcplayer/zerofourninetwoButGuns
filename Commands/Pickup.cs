@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CommandSystem;
+using Exiled.API.Enums;
 using Exiled.API.Extensions;
 using Exiled.API.Features;
 using InventorySystem.Items.Firearms.Ammo;
@@ -57,6 +58,7 @@ namespace zerofourninetwoButGuns.Commands
                     }
                     ply.AddItem(items[i]);
                     items[i].Destroy();
+                    ply.DisableEffect(EffectType.Scp207);
                     response = $"Picked up {items[i].Type.ToString()}";
                     return true;
                 }
