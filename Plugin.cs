@@ -61,14 +61,12 @@ namespace zerofourninetwoButGuns
         public void RegisterEvents()
         {
             Player.ChangingRole += EventHandler.OnChangingRole;
-            Player.DroppingItem += EventHandler.OnDroppingItem;
             Player.Hurting += EventHandler.OnHurting;
         }
 
         public void UnRegisterEvents()
         {
             Player.ChangingRole -= EventHandler.OnChangingRole;
-            Player.DroppingItem -= EventHandler.OnDroppingItem;
             Player.Hurting -= EventHandler.OnHurting;
         }
     }
