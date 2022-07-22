@@ -29,15 +29,14 @@ namespace zerofourninetwoButGuns.Commands
                 response = "Your inventory is full!";
                 return false;
             }
-
-            var transform = ply.ReferenceHub.transform;
-            var items = Map.Pickups.OrderBy((d) => (d.Position - transform.position).sqrMagnitude).ToArray();
+            
+            var items = Map.Pickups.OrderBy(d => Vector3.Distance(ply.Position, d.Position)).ToArray();
 
             for(int i = 0; i < Map.Pickups.Count; i++)
             {
-                if (Map.Pickups.Count < i || (items[i].Position - transform.position).sqrMagnitude < 0.5f)
+                if (Map.Pickups.Count < i || Vector3.Distance(items[i].Position, ply.Position) > 1f)
                     break;
-                if (items[i].Type.IsAmmo() || Plugin.Singleton.Config.ammoPickup)
+                if (items[i].Type.IsAmmo() && Plugin.Singleton.Config.ammoPickup)
                 {
                     if(items[i] is Exiled.API.Features.Items.Pickup pickup && pickup.Base is AmmoPickup ammo)
                     {
